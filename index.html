@@ -34,7 +34,7 @@
 
   let index = 0;
   // 第一个页面停留 5 秒，中间页面停留 1 秒，最后一个页面停留 20 秒
-  const intervals = [2500, 1200, 1200, 1200, 1200, 70000];
+  const intervals = [2000, 1200, 1200, 1200, 1200, 6000];
 
   function nextPage() {
     if (index < pages.length) {
@@ -44,7 +44,7 @@
       if (index < pages.length) {
         setTimeout(nextPage, currentInterval);
       } else {
-        // 最后一个页面显示完后，20 秒后重新开始播放
+        // 最后一个页面显示完后，6 秒后重新开始播放
         setTimeout(() => {
           index = 0;
           nextPage();
@@ -54,7 +54,7 @@
   }
 
   // 等待 5 秒后开始翻页
-  setTimeout(nextPage, 5000);
+  setTimeout(nextPage, 1000);
 </script>
 
 </body>
