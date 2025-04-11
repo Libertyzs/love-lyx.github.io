@@ -25,16 +25,16 @@
   // 播放页面列表
   const pages = [
     "album/index.html",      // 3D相册第一页
-    "starry-sky.html",
-    "love2.html",
-    "love3.html",
-    "love4.html",
-    "love1.html"             // 最后一页停留
+    "love/starry-sky.html",
+    "love/love2.html",
+    "love/love3.html",
+    "love/love4.html",
+    "love/love1.html"             // 最后一页停留
   ];
 
   let index = 0;
   // 第一个页面停留 5 秒，中间页面停留 1 秒，最后一个页面停留 20 秒
-  const intervals = [4000, 1500, 1500, 1500, 1500, 10000];
+  const intervals = [3000, 1200, 1200, 1200, 1200, 70000];
 
   function nextPage() {
     if (index < pages.length) {
