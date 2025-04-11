@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>播放控制页</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- iframe 用于加载每一页 -->
+<iframe id="viewer" src="album/index.html"></iframe>
+
+<script>
+  // 播放页面列表
+  const pages = [
+    "album/index.html",      // 3D相册第一页
+    "starry-sky.html",
+    "love2.html",
+    "love3.html",
+    "love4.html",
+    "love1.html"             // 最后一页停留
+  ];
+
+  let index = 0;
+  // 第一个页面停留 5 秒，中间页面停留 1 秒，最后一个页面停留 20 秒
+  const intervals = [4000, 1500, 1500, 1500, 1500, 10000];
+
+  function nextPage() {
+    if (index < pages.length) {
+      document.getElementById("viewer").src = pages[index];
+      const currentInterval = intervals[index];
+      index++;
+      if (index < pages.length) {
+        setTimeout(nextPage, currentInterval);
+      } else {
+        // 最后一个页面显示完后，20 秒后重新开始播放
+        setTimeout(() => {
+          index = 0;
+          nextPage();
+        }, currentInterval);
+      }
+    }
+  }
+
+  // 等待 5 秒后开始翻页
+  setTimeout(nextPage, 5000);
+</script>
+
+</body>
+</html>
